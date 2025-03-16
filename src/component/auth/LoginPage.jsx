@@ -26,7 +26,7 @@ function LoginPage() {
             if (response.statusCode === 200) {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('role', response.role);
-                navigate(from, { replace: true });
+                navigate('/');
             }
         } catch (error) {
             setError(error.response?.data?.message || error.message);
