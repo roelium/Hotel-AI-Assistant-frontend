@@ -1,6 +1,6 @@
 **Roel Hotel - AI Assistant - frontend**
 
-This is the frontend part of a fullstack simple hotel booking management system with AI assistant that can interact with booking data. The main purpose is for educational/experimental to show case the React codes including a chatbot that interacts with the backend that utilise Langchain4J with its LLM tooling capabilities.
+The frontend part of a fullstack simple hotel booking management system with AI assistant that can interact with booking data. For educational/experimental purpose to show case the React codes including a chatbot that interacts with the backend that utilise Langchain4J with its LLM tooling capabilities.
 
 **Tech stack**
 
