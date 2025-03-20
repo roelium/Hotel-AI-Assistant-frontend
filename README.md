@@ -2,6 +2,8 @@
 
 The frontend part of a fullstack simple hotel booking management system with AI assistant that can interact with booking data. For educational/experimental purpose to show case the React codes including a chatbot that interacts with the backend utilizing Langchain4J with its AI LLM tooling capabilities.
 
+Medium article for more context: [https://medium.com/@syahrulanw/integrating-an-ai-assistant-with-rag-using-langchain4j-in-a-spring-boot-react-js-17fdc76676b4](https://medium.com/@syahrulanw/integrating-an-ai-assistant-with-rag-using-langchain4j-in-a-spring-boot-react-js-17fdc76676b4)
+
 ## Tech Stack
 
 Frontend: React, Javascript, Typescript
