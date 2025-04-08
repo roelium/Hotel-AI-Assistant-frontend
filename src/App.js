@@ -21,15 +21,17 @@ import SupportAgent from './component/agent/SupportAgent.tsx';
 import { ProtectedRoute, AdminRoute } from './service/guard';
 import {SplitLayout} from "@vaadin/react-components";
 import AllMyBookings from "./component/booking_rooms/AllMyBookings";
+import ApiService from "./service/ApiService";
 
 function App() {
   const [changeByAgent, setChangeByAgent] = useState(1);
+  const isAuthenticated = ApiService.isAuthenticated();
 
   return (
     <BrowserRouter>
       <div className="App">
         <SplitLayout className="h-full" style={{height:'100vh'}}>
-          <ProtectedRoute element={<SupportAgent changeByAgent={changeByAgent} setChangeByAgent={setChangeByAgent}/>}/>
+          {isAuthenticated &&  <SupportAgent changeByAgent={changeByAgent} setChangeByAgent={setChangeByAgent}/>}
           <div className="flex flex-col gap-m p-m box-border" style={{width: '70%'}}>
             <Navbar />
             <div className="content">
