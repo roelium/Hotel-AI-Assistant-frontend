@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './component/common/Navbar';
 import FooterComponent from './component/common/Footer';
@@ -25,20 +25,25 @@ import ApiService from "./service/ApiService";
 
 function App() {
   const [changeByAgent, setChangeByAgent] = useState(1);
-  const isAuthenticated = ApiService.isAuthenticated();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(()=>{
+    setIsAuthenticated(ApiService.isAuthenticated());
+
+  }, []);
 
   return (
     <BrowserRouter>
       <div className="App">
         <SplitLayout className="h-full" style={{height:'100vh'}}>
-          {isAuthenticated &&  <SupportAgent changeByAgent={changeByAgent} setChangeByAgent={setChangeByAgent}/>}
+          <SupportAgent isAuthenticated={isAuthenticated} changeByAgent={changeByAgent} setChangeByAgent={setChangeByAgent}/>
           <div className="flex flex-col gap-m p-m box-border" style={{width: '70%'}}>
-            <Navbar />
+            <Navbar setIsAuthenticated={setIsAuthenticated} />
             <div className="content">
                     <Routes>
                       {/* Public Routes */}
                       <Route exact path="/home" element={<HomePage />} />
-                      <Route exact path="/login" element={<LoginPage />} />
+                      <Route exact path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
                       <Route path="/register" element={<RegisterPage />} />
                       <Route path="/rooms" element={<AllRoomsPage />} />
                       <Route path="/find-booking" element={<FindBookingPage />} />

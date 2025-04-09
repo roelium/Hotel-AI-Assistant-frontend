@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate,useLocation } from "react-router-dom";
 import ApiService from "../../service/ApiService";
 
-function LoginPage() {
+function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -26,6 +26,7 @@ function LoginPage() {
             if (response.statusCode === 200) {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('role', response.role);
+                props.setIsAuthenticated(true);
                 navigate('/');
             }
         } catch (error) {

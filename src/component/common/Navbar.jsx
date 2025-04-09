@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ApiService from '../../service/ApiService';
 
-function Navbar() {
+function Navbar(props) {
     const isAuthenticated = ApiService.isAuthenticated();
     const isAdmin = ApiService.isAdmin();
     const isUser = ApiService.isUser();
@@ -12,6 +12,7 @@ function Navbar() {
         const isLogout = window.confirm('Are you sure you want to logout this user?');
         if (isLogout) {
             ApiService.logout();
+            props.setIsAuthenticated(false);
             navigate('/home');
         }
     };

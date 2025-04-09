@@ -60,14 +60,17 @@ const SupportAgent= (props)=> {
   }
 
 
-  return (
-      <div className="chat" style={{ maxHeight: '900px', maxWidth: '500px' }}>
-        <h3>Roel Hotel Support Agent</h3><br/>
-        <MessageList messages={messages} className="messages"/>
-        <MessageInput onSubmit={e => sendMessage(e.detail.value)} className="messageInput verticalAlignment"/>
-
-      </div>
-  );
+  if(props.isAuthenticated) {
+    return (
+        <div className="chat" style={{maxHeight: '900px', maxWidth: '500px'}}>
+          <h3>Roel Hotel Support Agent</h3><br/>
+          <MessageList messages={messages} className="messages"/>
+          <MessageInput onSubmit={e => sendMessage(e.detail.value)} className="messageInput verticalAlignment"/>
+        </div>
+    );
+  }
+  else
+    return null;
 }
 
 export default SupportAgent;
